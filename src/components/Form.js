@@ -31,7 +31,7 @@ function Form() {
       let from = parseInt(inputFields[i].fromUnits);
       let to = parseInt(inputFields[i].toUnits);
       let unitAmt = parseFloat(inputFields[i].unitAmount);
-      if (!validateInputFields(from, to, totUnits)) {
+      if (!validateInputFields(from, to, totUnits, unitAmt, i)) {
         return;
       }
       if (totUnits >= from && totUnits < to) {
@@ -43,30 +43,37 @@ function Form() {
     setTotAmount((Math.round(totalAmt * 100) / 100).toFixed(2));
   };
 
-  const validateInputFields = (from, to, totUnits) => {
-    if (from === "") {
-      alert("Enter From Units");
+  const validateInputFields = (from, to, totUnits, unitAmt, i) => {
+    if (String(from) === "NaN" || from <= 0) {
+      alert("From Units should be a positive number");
       return false;
     }
 
-    if (to === "") {
-      alert("Enter To Units");
+    if (String(to) === "NaN" || to <= 0) {
+      alert("To Units should be a positive number");
       return false;
     }
 
-    if (totUnits === "") {
-      alert("Enter Total Units");
+    if (String(unitAmt) === "NaN" || unitAmt <= 0) {
+      alert("Amount per Unit should be a positive number");
+      return false;
+    }
+
+    if (String(totUnits) === "NaN" || totUnits <= 0) {
+      alert("Total Units should be a positive number");
       return false;
     }
 
     if (from > to) {
-      alert("To Units cannot be less than From Units");
+      alert("To Units should be greater than From Units");
       return false;
     }
 
-    if (from < 0 || to < 0 || totUnits < 0) {
-      alert("From Units, To Units and Total Units cannot be less than zero");
-      return false;
+    if (inputFields.length - 1 === i) {
+      if (totUnits < from || totUnits > to) {
+        alert("Total Units should be between From and To Units");
+        return false;
+      }
     }
 
     return true;
@@ -85,8 +92,10 @@ function Form() {
 
   const handleRemove = (idx) => {
     const values = [...inputFields];
-    values.splice(idx, 1);
-    setInputFields(values);
+    if (!(values.length === 1)) {
+      values.splice(idx, 1);
+      setInputFields(values);
+    }
   };
 
   const handleChangeTotUnits = (e) => {
@@ -97,6 +106,7 @@ function Form() {
     <form onSubmit={handleSubmit}>
       {inputFields.map((inputField, index) => (
         <Fields
+          key={index}
           index={index}
           inputField={inputField}
           handleChangeInput={handleChangeInput}
