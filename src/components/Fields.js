@@ -26,7 +26,6 @@ function Fields({
         }}
       />
       <TextField
-        className='tf'
         type='number'
         name='toUnits'
         variant='outlined'
@@ -48,11 +47,17 @@ function Fields({
         }}
       />
 
-      <IconButton className='plus' onClick={handleAdd} color='primary'>
+      <IconButton
+        className='plus'
+        tabIndex='-1'
+        onClick={handleAdd}
+        color='primary'
+      >
         <AddIcon />
       </IconButton>
       <IconButton
         className='minus'
+        tabIndex='-1'
         onClick={handleRemove}
         color='secondary'
         variant='contained'

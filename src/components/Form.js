@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Fields from "./Fields";
-import { TextField } from "@material-ui/core";
+import { TextField, Typography } from "@material-ui/core";
 import Button from "@material-ui/core/Button";
 import Icon from "@material-ui/core/Icon";
 
@@ -126,13 +126,6 @@ function Form() {
         }}
         value={totUnits}
       />
-      <TextField
-        name='unitAmount'
-        variant='outlined'
-        label='Total Amount'
-        disabled
-        value={totAmount}
-      />
 
       <Button
         variant='contained'
@@ -142,6 +135,17 @@ function Form() {
       >
         Calculate
       </Button>
+
+      <Typography
+        tabIndex='-1'
+        className='total-bill-amt'
+        variant='h6'
+        name='unitAmount'
+        placeholder='0'
+        gutterBottom
+      >
+        Total Bill Amount: {totAmount}
+      </Typography>
     </form>
   );
 }

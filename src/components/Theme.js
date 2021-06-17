@@ -10,7 +10,7 @@ const Theme = createMuiTheme({
     },
   },
   typography: {
-    fontFamily: "Calibri",
+    fontFamily: ["Calibri", "sans-serif"],
   },
   shape: {
     borderRadius: 20,
@@ -44,6 +44,10 @@ const Theme = createMuiTheme({
       InputLabelProps: {
         shrink: true,
       },
+    },
+    
+    MuiButtonBase: {
+      disableRipple: true,
     },
   },
 });
