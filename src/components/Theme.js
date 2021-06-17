@@ -33,19 +33,25 @@ const Theme = createMuiTheme({
         fontSize: "20px",
       },
     },
+    MuiTypography: {
+      root: {
+        marginTop: "5px",
+        marginLeft: "10px",
+      },
+    },
   },
   props: {
     MuiButton: {
       disableRipple: true,
       color: "primary",
     },
-    
+
     MuiTextField: {
       InputLabelProps: {
         shrink: true,
       },
     },
-    
+
     MuiButtonBase: {
       disableRipple: true,
     },

@@ -24,7 +24,6 @@ header {
 }
 
 .total-bill-amt {
-  display: flex;
   width: fit-content;
   background-color: black;
   color: #ee7a1b;
@@ -32,5 +31,4 @@ header {
   text-transform: none;
   padding-left: 10px;
   padding-right: 10px;
-  margin: 10px;
 }
