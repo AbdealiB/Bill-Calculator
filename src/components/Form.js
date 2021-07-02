@@ -32,6 +32,7 @@ function Form() {
       let to = parseInt(inputFields[i].toUnits);
       let unitAmt = parseFloat(inputFields[i].unitAmount);
       if (!validateInputFields(from, to, totUnits, unitAmt, i)) {
+        setTotAmount("0.00");
         return;
       }
       if (totUnits >= from && totUnits < to) {
@@ -44,7 +45,8 @@ function Form() {
   };
 
   const validateInputFields = (from, to, totUnits, unitAmt, i) => {
-    if (String(from) === "NaN" || from <= 0) {
+    console.log(i);
+    if ((String(from) === "NaN" || from <= 0) && i > 0) {
       alert("From Units should be a positive number");
       return false;
     }

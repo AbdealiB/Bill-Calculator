@@ -8,7 +8,7 @@ import { ThemeProvider } from "@material-ui/core";
 function App() {
   return (
     <Container>
-      <header className='head'>Units Calculator App</header>
+      <header className='head'>Bill Calculator App</header>
       <ThemeProvider theme={Theme}>
         <Form />
       </ThemeProvider>
